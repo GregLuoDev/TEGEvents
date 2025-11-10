@@ -10,7 +10,11 @@ import { useEffect, useRef, useState } from 'react';
 import { useEventCalendar } from './useEventCalendar';
 import { EventDialog } from '../EventDialog/EventDialog';
 
-export function EventCalendar({ events }: { events: Event[] }) {
+type Props = {
+  events: Event[];
+};
+
+export function EventCalendar({ events }: Props) {
   const { ConvertToEventInputs } = useEventCalendar();
   const eventInputs: EventInput[] = ConvertToEventInputs(events);
   const [selectedEvent, setSelectedEvent] = useState<EventInput | null>(null);
@@ -33,7 +37,7 @@ export function EventCalendar({ events }: { events: Event[] }) {
         plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]}
         initialView="dayGridMonth"
         events={eventInputs}
-        height="calc(100vh - 190px)"
+        height="calc(100vh - 200px)"
         eventClick={(info) => {
           const event = eventInputs.find((e) => e.id === info.event.id);
           if (event) setSelectedEvent(event);

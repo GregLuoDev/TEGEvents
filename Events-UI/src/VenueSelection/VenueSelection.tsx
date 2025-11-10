@@ -20,12 +20,8 @@ export function VenueSelection({ venues, onChange }: Props) {
 
   return (
     <Box sx={{ minWidth: 300, pt: 2, pb: 4 }}>
-      <Typography variant="h6" gutterBottom>
-        Select Venue
-      </Typography>
-
-      <FormControl fullWidth>
-        <InputLabel id="venue-select-label">Venue</InputLabel>
+      <FormControl fullWidth size="small">
+        <InputLabel id="venue-select-label">Select Venue</InputLabel>
         <Select
           labelId="venue-select-label"
           value={selectedVenue}

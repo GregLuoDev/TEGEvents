@@ -1,9 +1,9 @@
 import { Dialog, DialogContent, DialogTitle } from '@mui/material';
-import { Event } from '@/src/lib/types';
 import { Dispatch, SetStateAction } from 'react';
-import { EventInput, CalendarApi } from '@fullcalendar/core';
+import { EventInput } from '@fullcalendar/core';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
+import { useAppSelector } from '@/src/lib/store';
 
 type Props = {
   selectedEvent: EventInput;
@@ -11,6 +11,9 @@ type Props = {
 };
 
 export function EventDialog({ selectedEvent, setSelectedEvent }: Props) {
+  const { venues } = useAppSelector((state) => state.event);
+  const venue = venues.find((venue) => venue.id === selectedEvent.venueId);
+
   return (
     <Dialog open={!!selectedEvent}>
       <DialogTitle>{selectedEvent?.title}</DialogTitle>
@@ -33,7 +36,10 @@ export function EventDialog({ selectedEvent, setSelectedEvent }: Props) {
         <strong>Start Date:</strong>
         {selectedEvent.start ? selectedEvent.start.toLocaleString() : ''}
         <br />
-        <strong>Venue ID:</strong> {selectedEvent?.venueId}
+        <strong>Venue:</strong>
+        <span>
+          {venue!.name} at <i>{venue!.location}</i>
+        </span>
       </DialogContent>
     </Dialog>
   );
