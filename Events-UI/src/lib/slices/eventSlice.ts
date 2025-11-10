@@ -1,12 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { Event, Venue } from '../types';
-import {
-  createEvent,
-  deleteEvent,
-  fetchEvents,
-  fetchVenues,
-  updateEvent,
-} from '../thunks/eventAsyncThunks';
+import { fetchEvents, fetchVenues } from '../thunks/eventAsyncThunks';
 
 type EventState = {
   events: Event[];
@@ -16,13 +10,6 @@ type EventState = {
   venues: Venue[];
   isLoadingVenues: boolean;
   fetchingVenuesError: string;
-
-  currentEvent: Event | null;
-  isLoadingEvent: boolean;
-  isCreatingEvent: boolean;
-  isUpdatingEvent: boolean;
-  isDeletingEvent: boolean;
-  error: string;
 };
 
 const initialState: EventState = {
@@ -33,23 +20,12 @@ const initialState: EventState = {
   venues: [],
   isLoadingVenues: true,
   fetchingVenuesError: '',
-
-  currentEvent: null,
-  isLoadingEvent: false,
-  isCreatingEvent: false,
-  isUpdatingEvent: false,
-  isDeletingEvent: false,
-  error: '',
 };
 
 const eventSlice = createSlice({
   name: 'event',
   initialState,
-  reducers: {
-    clearError: (state) => {
-      state.error = '';
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(fetchEvents.pending, (state) => {
@@ -82,60 +58,8 @@ const eventSlice = createSlice({
         state.isLoadingVenues = false;
         state.fetchingVenuesError = action.payload as string;
         state.venues = [];
-      })
-
-      .addCase(createEvent.pending, (state) => {
-        state.isCreatingEvent = true;
-        state.error = '';
-      })
-      .addCase(createEvent.fulfilled, (state, action) => {
-        state.isCreatingEvent = false;
-        state.error = '';
-        state.events.push(action.payload);
-      })
-      .addCase(createEvent.rejected, (state, action) => {
-        state.isCreatingEvent = false;
-        state.error = action.payload as string;
-      })
-
-      .addCase(updateEvent.pending, (state) => {
-        state.isUpdatingEvent = true;
-        state.error = '';
-      })
-      .addCase(updateEvent.fulfilled, (state, action) => {
-        state.isUpdatingEvent = false;
-        state.error = '';
-        state.events = state.events.map((event) => {
-          const newEvent = action.payload;
-          if (event.id === newEvent.id) {
-            return { ...event, ...newEvent, updatedAt: new Date().toISOString() };
-          }
-          return event;
-        });
-      })
-      .addCase(updateEvent.rejected, (state, action) => {
-        state.isUpdatingEvent = false;
-        state.error = action.payload as string;
-      })
-
-      .addCase(deleteEvent.pending, (state) => {
-        state.isDeletingEvent = true;
-        state.error = '';
-      })
-      .addCase(deleteEvent.fulfilled, (state, action) => {
-        state.isDeletingEvent = false;
-        state.error = '';
-        state.events = state.events.filter((t) => {
-          const id = action.payload;
-          return t.id !== id;
-        });
-      })
-      .addCase(deleteEvent.rejected, (state, action) => {
-        state.isDeletingEvent = false;
-        state.error = action.payload as string;
       });
   },
 });
 
-export const { clearError } = eventSlice.actions;
 export default eventSlice.reducer;
