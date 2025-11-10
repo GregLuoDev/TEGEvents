@@ -1,9 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.14.36310.24 d17.14
+VisualStudioVersion = 17.14.36310.24
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Events-WebAPI", "Events-WebAPI\Events-WebAPI.csproj", "{098D8549-FD10-43DF-B2A3-858D32934FB6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Events-WebAPI-Tests", "Events-WebAPI-Tests\Events-WebAPI-Tests.csproj", "{53E44988-1A3E-4DB7-9396-A35369B98A5A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{098D8549-FD10-43DF-B2A3-858D32934FB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{098D8549-FD10-43DF-B2A3-858D32934FB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{098D8549-FD10-43DF-B2A3-858D32934FB6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53E44988-1A3E-4DB7-9396-A35369B98A5A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53E44988-1A3E-4DB7-9396-A35369B98A5A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53E44988-1A3E-4DB7-9396-A35369B98A5A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53E44988-1A3E-4DB7-9396-A35369B98A5A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
