@@ -2,8 +2,8 @@
 
 /Events-WebAPI/Events-WebAPI/obj/
 /Events-WebAPI/Events-WebAPI/bin/
-/Events-WebAPI/Events-WebAPI.Tests/obj/
-/Events-WebAPI/Events-WebAPI.Tests/bin/
+/Events-WebAPI/Events-WebAPI-Tests/obj/
+/Events-WebAPI/Events-WebAPI-Tests/bin/
 
 # Logs
 logs
