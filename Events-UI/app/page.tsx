@@ -44,7 +44,7 @@ export default function Home() {
   return (
     <div className="container mx-auto p-8">
       <Typography variant="h5" gutterBottom>
-        What's on at TEG Staduim!
+        What's on at TEG Stadium!
       </Typography>
 
       {isLoading && <CircularProgress />}
