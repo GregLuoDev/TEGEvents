@@ -2,7 +2,8 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import { Event } from '../types';
 
-const baseUrl = 'https://localhost:7120';
+const baseUrl =
+  'https://events-webapi20251110151234-fbh0ezhucsbhcshr.canadacentral-01.azurewebsites.net'; // 'https://localhost:7120';
 
 export const fetchEvents = createAsyncThunk(
   `${baseUrl}/api/events`,
